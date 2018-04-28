@@ -372,9 +372,9 @@ File ideaMarker = new File(projectDir, '.local-idea-is-configured')
 tasks.idea.doLast {
   ideaMarker.setText('', 'UTF-8')
 }
-if (System.getProperty('idea.active') != null && ideaMarker.exists() == false) {
-  throw new GradleException('You must run gradle idea from the root of elasticsearch before importing into IntelliJ')
-}
+//if (System.getProperty('idea.active') != null && ideaMarker.exists() == false) {
+//  throw new GradleException('You must run gradle idea from the root of elasticsearch before importing into IntelliJ')
+//}
 
 // eclipse configuration
 allprojects {
@@ -397,6 +397,7 @@ allprojects {
     eclipse.classpath.file.whenMerged { classpath ->
       // give each source folder a unique corresponding output folder
       int i = 0;
+      int j = 0;
       classpath.entries.findAll { it instanceof SourceFolder }.each { folder ->
         i++;
         // this is *NOT* a path or a file.
